@@ -88,13 +88,22 @@ function BiographicalInformation(props) {
         maritalStatusErrorMessage: '',
     });
 
-    const mounted = useRef()
     useEffect(() => {
-        const {personalInformationRef}=props
-        if (!mounted.current) {
+        const {personalInformationRef,personalInformation}=props
             personalInformationRef(this)
+
+        if(Object.keys(personalInformation.biographicalInformation).length>0){
+            setState({
+                 firstName:personalInformation.biographicalInformation.firstName,
+                 lastName:personalInformation.biographicalInformation.lastName,
+                 identityNumber:personalInformation.biographicalInformation.idNumber,
+                 dateOfBirth:personalInformation.biographicalInformation.dateOfBirth,
+                 contactNumber:personalInformation.biographicalInformation.contactNumber,
+                 emailAddress:personalInformation.biographicalInformation.emailAddress,
+                 maritalStatus:personalInformation.biographicalInformation.maritalStatus
+            })
         }
-    });
+    }, [props]);
 
     const handleChange = name => event => {
         setState({

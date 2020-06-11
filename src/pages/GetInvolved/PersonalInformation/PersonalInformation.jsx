@@ -67,7 +67,7 @@ function PersonalInformation(props) {
         setActiveStep(0);
     };
 
-    function isSectionValid (section)  {
+    function isSectionValid (section=0)  {
         switch (section) {
             case 0:
                 return biographicalInformationFunc()
@@ -116,7 +116,7 @@ function PersonalInformation(props) {
         setState({ biographicalInformationChildRef: childData })
     }
 
-    const getStepContent=(index)=> {
+    const getStepContent=(index=0)=> {
         switch (index) {
             case 0:
                 return <BiographicalInformation personalInformationRef={biographicalInformationCallBack}/>;
